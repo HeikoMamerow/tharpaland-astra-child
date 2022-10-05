@@ -110,3 +110,43 @@ Here are the tweaks.
 	padding-top: 0;
 	padding-bottom: .45em;
 }
+
+/* Calendar */
+.tharpaland-flexbox {
+	display: flex;
+	gap: 10px;
+}
+
+.tharpaland-calendar-events-list {
+	display: none;
+}
+
+@media (max-width: 768px) {
+	.tharpaland-calendar-events-list {
+		display: block;
+	}
+
+	.tharpaland-fullcalendar {
+		display: none;
+	}
+}
+
+/* Tweak Kiosken block plugin for wrapped flex list */
+@media (min-width: 767px) {
+	.kt-custom-flex-wrap-container {
+		flex-wrap: wrap;
+		gap: 30px;
+		justify-content: flex-start;
+	}
+
+	.kt-custom-flex-wrap-container .kt-custom-flex-wrap-item {
+		flex: 0 0 calc(25% - 23px);
+		margin: 0;
+	}
+}
+
+@media (max-width: 766px) {
+	.kt-custom-flex-wrap-container .kt-custom-flex-wrap-item {
+		margin-bottom: 30px;
+	}
+}
