@@ -81,6 +81,11 @@ Here are the tweaks.
 	display: none;
 }
 
+/* Hide author Meta info */
+.single-event .event .entry-header {
+	display: none;
+}
+
 /* Recurrent events horizontal list */
 .em-next-recurring-events-horizontal-list a,
 .em-next-recurring-events-horizontal-list h3,
