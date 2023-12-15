@@ -26,9 +26,9 @@ if ( class_exists( 'EM_Events' ) ) {
 		);
 
 		$scope_today = date( 'Y-m-d' );
-		$scope_later = date( 'Y-m-d', strtotime( "+21 day" ) );
+		$scope_later = date( 'Y-m-d', strtotime( "+6 day" ) );
 
-		// Get events within the scope (today + 21 days)
+		// Get events within the scope (today + 6 days)
 		$em_events = EM_Events::get( [
 			'hide_empty'  => 1,
 			'recurrences' => 1,

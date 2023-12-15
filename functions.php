@@ -49,8 +49,26 @@ add_filter( 'wp_nav_menu', 'do_shortcode' );
 add_filter( 'the_content', 'do_shortcode' );
 
 /**
- * Shortcode for advanced notice in menu.
- * This is an enhancement of the Events Manager plugin.
+ * Shortcodes for advanced notice in menu "Gesungene Gebete".
  */
-include_once 'function-events-manager-shortcode-wiederkehrende-veranstaltungen.php';
-include_once 'function_events-manager_shortcode_gesungene-gebete.php';
+@require 'events-manager/shortcode-gesungene-gebete.php';
+
+/**
+ * Shortcodes for advanced notice in menu "Wiederkehrende Veranstaltungen".
+ */
+@require 'events-manager/shortcode-wiederkehrende-veranstaltungen.php';
+
+/**
+ * Shortcodes for advanced notice in menu "Zweigstellen".
+ */
+@require 'events-manager/shortcode-zweigstellen.php';
+
+/**
+ * Shortcodes for advanced notice in menu "Meditationskurse".
+ */
+@require 'events-manager/shortcode-meditationskurse.php';
+
+/**
+ * Options page for Event Manager
+ */
+@require 'events-manager/options-page.php';
