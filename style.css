@@ -73,7 +73,7 @@ Here are the tweaks.
 }
 
 .menu-link-flex-item3 {
-	flex: 0 1 auto;
+	flex: 1 0 100%;
 }
 
 /* Hide navigation */
@@ -154,4 +154,31 @@ Here are the tweaks.
 	.kt-custom-flex-wrap-container .kt-custom-flex-wrap-item {
 		margin-bottom: 30px;
 	}
+}
+
+/* Zweigstellen */
+.zweigstellen-menu .sub-menu {
+	width: 500px
+}
+
+.zweigstellen-menu-title {
+	line-height: 1.49;
+	padding: .9em 1em;
+}
+
+.ast-header-break-point .main-navigation .sub-menu .zweigstellen-menu-title {
+	padding-left: 30px;
+}
+
+.branch-event-name {
+	padding-left: 1em;
+	padding-bottom: .45em;
+}
+
+.branch-event-name:not(:first-of-type) {
+	margin-top: .9em;
+}
+
+.branch-event-name {
+	color: #0096d6;
 }
