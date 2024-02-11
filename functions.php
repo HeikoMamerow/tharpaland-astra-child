@@ -49,12 +49,12 @@ add_filter( 'wp_nav_menu', 'do_shortcode' );
 add_filter( 'the_content', 'do_shortcode' );
 
 /**
- * Shortcodes for advanced notice in menu "Gesungene Gebete".
+ * Shortcodes for entries in menu Programm.
  */
-@require 'events-manager/shortcode-gesungene-gebete.php';
+@require 'events-manager/menu-shortcodes.php';
 
 /**
- * Shortcodes for advanced notice in menu "Wiederkehrende Veranstaltungen".
+ * Shortcodes for entries in menu Programm.
  */
 @require 'events-manager/shortcode-wiederkehrende-veranstaltungen.php';
 

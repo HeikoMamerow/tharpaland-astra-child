@@ -18,7 +18,7 @@ function em_menu_meditationskurse_func() {
 	// Get events within the scope (today + 6 days)
 	$em_events = EM_Events::get( [
 		'hide_empty' => 1,
-		'orderby'    => "event_start_date,event_start_time",
+		'orderby'    => "event_start_date",
 		'limit'      => 3,
 		'category'   => 23
 	] );
@@ -42,7 +42,7 @@ function em_menu_meditationskurse_func() {
 	$day_number = array_column( $events, 'day_number' );
 	$start_time = array_column( $events, 'start_time' );
 	$timestamp  = array_column( $events, 'timestamp' );
-	array_multisort( $day_number, SORT_ASC, $start_time, SORT_ASC, $timestamp, SORT_ASC, $events );
+	array_multisort( $day_number, SORT_DESC, $start_time, SORT_ASC, $timestamp, SORT_ASC, $events );
 
 	// Marker value for the start in the loop
 	$event_day = 'start';

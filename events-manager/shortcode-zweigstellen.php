@@ -91,16 +91,18 @@ function em_menu_zweigstellen_func() {
 
 	// We only want the soonest recurring event on every day.
 	// Therefore, we need make sure only 1 recurrence_id occur per day.
-	$alreadyExistingEventsBasket = [];
+	$alreadyExistingEventsBasket     = [];
+	$alreadyExistingEventsNameBasket = [];
 
 	foreach ( $events as $event ) {
-		$eventControlNumber = $event['day_number'] . '-' . $event['recurrence_id'];
+		$eventControlNumber   = $event['day_number'] . '-' . $event['recurrence_id'];
+		$sanitized_event_name = preg_replace( '/[^a-zA-Z0-9]/', '', $event['event_name'] );
 
 		if ( ! in_array( $eventControlNumber, $alreadyExistingEventsBasket, true ) ) {
 			$alreadyExistingEventsBasket[] = $eventControlNumber;
 			// Need special markup for the first loop.
 			if ( $event_day === 'start' ) {
-				$alreadyExistingEventsNameBasket = $event['event_name'];
+				$alreadyExistingEventsNameBasket[ $sanitized_event_name ] = $event['event_name'];
 
 				$string .= '<div class="menu-link-flex em-recurring-events-in-menu branch-event-name">';
 				$string .= esc_html( $event['event_name'] );
@@ -114,12 +116,12 @@ function em_menu_zweigstellen_func() {
 				$string .= '</div>'; // .menu-link-event-list
 				$string .= '</div>'; // .menu-link-flex
 
-				if ( $alreadyExistingEventsNameBasket !== $event['event_name'] ) {
+				if ( ! array_key_exists( $sanitized_event_name, $alreadyExistingEventsNameBasket ) ) {
 					$string .= '<div class="menu-link-flex em-recurring-events-in-menu branch-event-name">';
 					$string .= esc_html( $event['event_name'] );
 					$string .= '</div>'; // .menu-link-flex
 
-					$alreadyExistingEventsNameBasket = $event['event_name'];
+					$alreadyExistingEventsNameBasket[ $sanitized_event_name ] = $event['event_name'];
 				}
 				$string .= '<div class="menu-link-flex em-recurring-events-in-menu">';
 				$string .= '<div class="menu-link menu-link-day">' . esc_html( $event['day'] ) . '</div>';

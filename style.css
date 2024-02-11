@@ -24,6 +24,26 @@ Here are the tweaks.
 	display: block !important;
 }
 
+/* Events Manager Menu */
+.kmc-em-menu-title {
+	padding-left: 1em;
+	padding-right: 1em;
+	margin-bottom: .25rem;
+}
+
+.kmc-em-menu-link {
+	display: grid;
+	grid-template-columns: 1.5rem 2.5rem auto;
+	column-gap: 1rem;
+	padding-left: 1em;
+	padding-right: 1em;
+	margin-bottom: .5rem;
+}
+
+.kmc-em-menu-col2 {
+	text-align: right;
+}
+
 /* Tweaks for Wiederkehrende Veranstaltungen in menu. */
 .menu-link-flex p {
 	margin-bottom: 0;
@@ -34,6 +54,10 @@ Here are the tweaks.
 	.menu-link-flex,
 	.main-header-menu .sub-menu .menu-link.menu-link-flex {
 		display: flex;
+	}
+
+	.main-header-menu .sub-menu .menu-link.menu-link-flex .menu-link-day {
+		flex: 0 0 40px;
 	}
 }
 
@@ -56,12 +80,16 @@ Here are the tweaks.
 .menu-link-day {
 	font-weight: bold;
 	padding-right: 0 !important;
-	flex: 0 0 45px;
+	flex: 0 0 50px;
 }
 
 .ast-header-break-point .main-navigation ul.sub-menu .menu-item .menu-link.menu-link-flex::before,
 .ast-header-break-point .main-navigation ul.sub-menu .menu-item .menu-link.menu-link-day::before {
 	content: none;
+}
+
+.menu-link-event-list {
+	width: 100%;
 }
 
 .menu-link-event-list .menu-link:nth-of-type(n+2) {
@@ -73,7 +101,7 @@ Here are the tweaks.
 }
 
 .menu-link-flex-item3 {
-	flex: 1 0 100%;
+	flex: 0 1 auto;
 }
 
 /* Hide navigation */
