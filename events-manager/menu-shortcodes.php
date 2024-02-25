@@ -113,7 +113,7 @@ function em_menu_func( $atts ) {
 	$timestamp  = array_column( $events, 'timestamp' );
 
 	if ( $atts['recurrences'] === '0' ) { // Meditationskurse
-		array_multisort( $day_number, SORT_DESC, $start_time, SORT_ASC, $timestamp, SORT_ASC, $events );
+		array_multisort( $timestamp, SORT_ASC, $start_time, SORT_ASC, $events );
 	} elseif ( $atts['get_branches'] === '1' ) { // Zweigstellen
 		$event = array_column( $events, 'event_name' );
 		array_multisort( $event, $day_number, SORT_ASC, $start_time, SORT_ASC, $timestamp, SORT_ASC, $events );
