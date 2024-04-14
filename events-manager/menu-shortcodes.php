@@ -44,7 +44,7 @@ function em_menu_func( $atts ) {
 		'eee'
 	);
 
-	$number_days = 60;
+	$number_days = get_field( 'anzahl_der_tage', 'option' );
 	$datetime    = '+' . $number_days . ' day';
 	$scope_today = date( 'Y-m-d' );
 	$scope_later = date( 'Y-m-d', strtotime( $datetime ) );
@@ -71,7 +71,6 @@ function em_menu_func( $atts ) {
 			return 'Keine Zweigstellen gefunden.';
 		}
 	}
-
 	// Get events within the scope (today + 31 days)
 	$em_events = EM_Events::get(
 		[
@@ -113,13 +112,13 @@ function em_menu_func( $atts ) {
 	$timestamp  = array_column( $events, 'timestamp' );
 
 	if ( $atts['recurrences'] === '0' ) { // Meditationskurse
-		array_multisort( $timestamp, SORT_ASC, $start_time, SORT_ASC, $events );
+		array_multisort( $timestamp, $start_time, $events );
 	} elseif ( $atts['get_branches'] === '1' ) { // Zweigstellen
 		$event = array_column( $events, 'event_name' );
-		array_multisort( $event, $day_number, SORT_ASC, $start_time, SORT_ASC, $timestamp, SORT_ASC, $events );
+		array_multisort( $timestamp, $start_time, $event, $events );
 	} else { // Wochenprogramm
 		// Sort by day then by time and then by timestamp.
-		array_multisort( $day_number, SORT_ASC, $start_time, SORT_ASC, $timestamp, SORT_ASC, $events );
+		array_multisort( $day_number, $start_time, $timestamp, $events );
 	}
 
 	// Wiederkehrende Veranstaltungen or Zweigstellen
@@ -168,9 +167,19 @@ function em_menu_func( $atts ) {
 
 	// Zweigstellen
 	if ( $atts['get_branches'] === '1' ) {
+		// Iterate trough $events and remove duplicate arrays with same event['category_name'].
+		$category_name_basket = [];
 		// Iterate trough $events and toggle duplicate event_name to empty string.
 		$event_name = '';
 		foreach ( $events as $key => $event ) {
+			// When $event['category_name'] is already in $category_name_basket skip the loop.
+			if ( in_array( $event['category_name'], $category_name_basket, true ) ) {
+				unset( $events[ $key ] );
+				continue;
+			} else {
+				$category_name_basket[] = $event['category_name'];
+			}
+			// When $event['event_name'] is already in $event_name toggle it to empty string.
 			$sanitized_event_name = preg_replace( '/[^a-zA-Z0-9]/', '', $event['event_name'] );
 			if ( $event_name === $sanitized_event_name ) {
 				$events[ $key ]['event_name'] = '';
@@ -185,7 +194,11 @@ function em_menu_func( $atts ) {
 			$string .= '<div class="kmc-em-menu-title">' . $event['event_name'] . '</div>';
 		}
 		$string .= '<a class="kmc-em-menu-link" href="' . $event['guid'] . '">';
-		$string .= '<span>' . $event['day'] . '</span>';
+		if ( $atts['get_branches'] === '1' ) { // Zweigstellen
+			$string .= '<span>' . $event['start_date'] . '</span>';
+		} else {
+			$string .= '<span>' . $event['day'] . '</span>';
+		}
 		if ( $atts['recurrences'] === '1' ) { // Wiederkehrende Veranstaltungen
 			$string .= '<span class="kmc-em-menu-col2">' . $event['start_time'] . '</span>';
 		} else {

@@ -1,0 +1,47 @@
+{
+    "key": "group_641f00e018316",
+    "title": "Events Manager Options",
+    "fields": [
+        {
+            "key": "field_641f00e1afdf3",
+            "label": "Anzahl der Tage",
+            "name": "anzahl_der_tage",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Diese Option legt fest, wie viele Tage im Voraus wiederkehrende Veranstlatungen im Wochenprogramm angezeigt werden sollen.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 31,
+            "min": 1,
+            "max": 999,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "Tage:",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-events-manager-options"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "field",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1679754791
+}
