@@ -54,21 +54,6 @@ add_filter( 'the_content', 'do_shortcode' );
 @require 'events-manager/menu-shortcodes.php';
 
 /**
- * Shortcodes for entries in menu Programm.
- */
-@require 'events-manager/shortcode-wiederkehrende-veranstaltungen.php';
-
-/**
- * Shortcodes for advanced notice in menu "Zweigstellen".
- */
-@require 'events-manager/shortcode-zweigstellen.php';
-
-/**
- * Shortcodes for advanced notice in menu "Meditationskurse".
- */
-@require 'events-manager/shortcode-meditationskurse.php';
-
-/**
  * Options page for Event Manager
  */
 @require 'events-manager/options-page.php';
