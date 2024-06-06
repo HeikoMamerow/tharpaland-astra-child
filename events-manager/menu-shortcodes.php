@@ -116,7 +116,7 @@ function em_menu_func( $atts ) {
 		array_multisort( $timestamp, $start_time, $events );
 	} elseif ( $atts['get_branches'] === '1' ) { // Zweigstellen
 		$event = array_column( $events, 'event_name' );
-		array_multisort( $event, $timestamp, $start_time, $events );
+		array_multisort( $timestamp, $event, $start_time, $events );
 	} else { // Wochenprogramm
 		// Sort by day then by time and then by timestamp.
 		array_multisort( $day_number, $start_time, $timestamp, $events );
