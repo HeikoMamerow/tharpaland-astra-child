@@ -92,6 +92,9 @@ function em_menu_func( $atts ) {
 	$events = [];
 	foreach ( $em_events as $em_event ) {
 		$terms = get_the_terms( $em_event->post_id, 'event-categories' );
+		if ( empty( $terms ) || ! is_array( $terms ) ) {
+			continue;
+		}
 		$term  = array_shift( $terms ); // Should only be one category per event.
 
 		$events[] = [
